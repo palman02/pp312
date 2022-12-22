@@ -3,7 +3,6 @@ package ru.shatov.pp312.DAO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shatov.pp312.models.User;
@@ -15,14 +14,8 @@ import java.util.List;
 @Transactional
 public class UserDAO {
 
-
+    @PersistenceContext
     private EntityManager entityManager;
-
-    @Autowired
-    public UserDAO(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
 
     public List<User> findAll() {
         Session session = entityManager.unwrap(Session.class);
